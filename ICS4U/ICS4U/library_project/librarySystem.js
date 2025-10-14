@@ -1,10 +1,11 @@
-//librarySystem.js
+// librarySystem.js
 import books from './books.js';
-//promt sync
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
-console.log(books)
-//add new book
+
+console.log(books);
+
+// Add new book
 function addBook(title, author, year) {
   const newBook = {
     title,
@@ -16,67 +17,115 @@ function addBook(title, author, year) {
   console.log(`Book "${title}" added to the library.`);
 }
 
-// list books
+// List available books
 function listAvailableBooks() {
-  const availableBooks = books.filter(book => book.isAvailable);
+  const availableBooks = [];
+  for (const book of books) {
+    if (book.isAvailable) {
+      availableBooks.push(book);
+    }
+  }
+
   if (availableBooks.length === 0) {
     console.log("No books are currently available.");
   } else {
     console.log("Available Books:");
-    availableBooks.forEach(book => console.log(`- ${book.title}`));
+    for (const book of availableBooks) {
+      console.log(`- ${book.title}`);
+    }
   }
 }
 
-//borrow bok
+// Borrow book
 function borrowBook(title) {
-  const book = books.find(book => book.title.toLowerCase() === title.toLowerCase());
-  
-  if (!book) {
+  let foundBook = null;
+
+  for (const book of books) {
+    if (book.title.toLowerCase() === title.toLowerCase()) {
+      foundBook = book;
+      break;
+    }
+  }
+
+  if (!foundBook) {
     console.log("Book not found.");
-  } else if (!book.isAvailable) {
-    console.log(`"${book.title}" is currently unavailable.`);
+  } else if (!foundBook.isAvailable) {
+    console.log(`"${foundBook.title}" is currently unavailable.`);
   } else {
-    book.isAvailable = false;
-    console.log(`You have borrowed "${book.title}".`);
+    foundBook.isAvailable = false;
+    console.log(`You have borrowed "${foundBook.title}".`);
   }
 }
 
-// return book
+// Return book
 function returnBook(title) {
-  const book = books.find(book => book.title.toLowerCase() === title.toLowerCase());
-  if (!book) {
+  let foundBook = null;
+
+  for (const book of books) {
+    if (book.title.toLowerCase() === title.toLowerCase()) {
+      foundBook = book;
+      break;
+    }
+  }
+
+  if (!foundBook) {
     console.log("Book not found.");
   } else {
-    book.isAvailable = true;
-    console.log(`You have returned "${book.title}".`);
+    foundBook.isAvailable = true;
+    console.log(`You have returned "${foundBook.title}".`);
   }
 }
 
-//specific author
+// List books by specific author
 function listBooksByAuthor(author) {
-  const booksByAuthor = books.filter(book => book.author.toLowerCase() === author.toLowerCase());
+  const booksByAuthor = [];
+
+  for (const book of books) {
+    if (book.author.toLowerCase() === author.toLowerCase()) {
+      booksByAuthor.push(book);
+    }
+  }
+
   if (booksByAuthor.length === 0) {
     console.log(`No books found by ${author}.`);
   } else {
     console.log(`Books by ${author}:`);
-    booksByAuthor.forEach(book => console.log(`- ${book.title}`));
+    for (const book of booksByAuthor) {
+      console.log(`- ${book.title}`);
+    }
   }
 }
 
-//find books published before a certain year
+// Find books published before a year
 function findBooksBeforeYear(year) {
-  const oldBooks = books.filter(book => book.year < parseInt(year));
+  const oldBooks = [];
+  for (const book of books) {
+    if (book.year < parseInt(year)) {
+      oldBooks.push(book);
+    }
+  }
+
   if (oldBooks.length === 0) {
     console.log(`No books published before ${year}.`);
   } else {
     console.log(`Books published before ${year}:`);
-    oldBooks.forEach(book => console.log(`- ${book.title} (${book.year})`));
+    for (const book of oldBooks) {
+      console.log(`- ${book.title} (${book.year})`);
+    }
   }
 }
 
 // Remove book
 function removeBook(title) {
-  const index = books.findIndex(book => book.title.toLowerCase() === title.toLowerCase());
+  let index = -1;
+
+  for (let i = 0; i < books.length; i++) {
+    if (books[i].title.toLowerCase() === title.toLowerCase()) {
+      index = i;
+      break;
+    }
+  }
+
   if (index === -1) {
     console.log("Book not found.");
   } else {
@@ -84,6 +133,8 @@ function removeBook(title) {
     console.log(`Book "${removed.title}" has been removed.`);
   }
 }
+
+// Main function
 function startLibrarySystem() {
   let exit = false;
 
@@ -98,33 +149,33 @@ function startLibrarySystem() {
       "6. Find books before a year\n" +
       "7. Remove a book\n" +
       "8. Exit\n" +
-      "Enter number here:"
+      "Enter number here: "
     );
 
     switch (choice) {
       case "1":
-        const title = prompt("Enter book title:");
-        const author = prompt("Enter book author:");
-        const year = prompt("Enter year published:");
+        const title = prompt("Enter book title: ");
+        const author = prompt("Enter book author: ");
+        const year = prompt("Enter year published: ");
         addBook(title, author, year);
         break;
       case "2":
         listAvailableBooks();
         break;
       case "3":
-        borrowBook(prompt("Enter the title of the book to borrow:"));
+        borrowBook(prompt("Enter the title of the book to borrow: "));
         break;
       case "4":
-        returnBook(prompt("Enter the title of the book to return:"));
+        returnBook(prompt("Enter the title of the book to return: "));
         break;
       case "5":
-        listBooksByAuthor(prompt("Enter the author's name:"));
+        listBooksByAuthor(prompt("Enter the author's name: "));
         break;
       case "6":
-        findBooksBeforeYear(prompt("Enter the year:"));
+        findBooksBeforeYear(prompt("Enter the year: "));
         break;
       case "7":
-        removeBook(prompt("Enter the title of the book to remove:"));
+        removeBook(prompt("Enter the title of the book to remove: "));
         break;
       case "8":
         exit = true;
@@ -135,5 +186,6 @@ function startLibrarySystem() {
     }
   }
 }
-//startuop
+
+// Start the program
 startLibrarySystem();
