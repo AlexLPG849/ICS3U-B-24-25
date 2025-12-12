@@ -246,14 +246,19 @@ app.put("/tests/:id", (req, res) => {
   res.json(test);
 });
 
+// POC - list all tests for a course
+app.get("/courses/:id/tests", (req, res) => {
+  const course = courses.find(c => c.id == req.params.id);
+  if (course == null) {
+    return res.status(404).json({ error: "Could not find course" });
+  }
+  res.json(tests.filter(t => t.courseId == req.params.id));
+});
+
+  
+
 // Start server
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
 });
 
-// POC - list all tests for a course
-app.get("/courses/:id/tests", (req, res) => {
-  res.json(tests.filter(t => t.courseId == req.params.id));
-});
-  if (courses === -1) 
-    return res.status(404).json({error: "Could not find course"});
