@@ -6,7 +6,7 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 
-// Helper functions
+// stuff
 function loadJson(file) {
   return JSON.parse(fs.readFileSync(path.join(__dirname, "data", file), "utf8"));
 }
@@ -27,8 +27,7 @@ let nextCourseId = Math.max(...courses.map(c => c.id), 0) + 1;
 let nextStudentId = Math.max(...students.map(s => s.id), 0) + 1;
 let nextTestId = Math.max(...tests.map(t => t.id), 0) + 1;
 
-// TEACHERS ROUTES
-//
+
 // Get all Teachers
 app.get("/teachers", (req, res) => res.json(teachers));
 // Teacher by ID
@@ -80,8 +79,7 @@ app.delete("/teachers/:id", (req, res) => {
   res.json({ message: "Deleted" });
 });
 
-// COURSES ROUTES
-//
+
 // Get all courses
 app.get("/courses", (req, res) => res.json(courses));
 // Course by ID
@@ -141,8 +139,7 @@ app.delete("/courses/:id", (req, res) => {
   res.json({ message: "Deleted" });
 });
 
-// STUDENTS ROUTES
-//
+
 //get all students
 app.get("/students", (req, res) => res.json(students));
 // studnet by ID
@@ -194,8 +191,7 @@ app.delete("/students/:id", (req, res) => {
   res.json({ message: "Deleted" });
 });
 
-// TESTS ROUTES
-//
+
 // get all tests
 app.get("/tests", (req, res) => res.json(tests));
 // test by ID
@@ -249,47 +245,15 @@ app.put("/tests/:id", (req, res) => {
 
   res.json(test);
 });
-// remove a tezt
-app.delete("/tests/:id", (req, res) => {
-  tests = tests.filter(t => t.id != req.params.id);
-  saveJson("tests.json", tests);
-  res.json({ message: "Deleted" });
-});
-
-// returns tests taken by x student
-app.get("/students/:id/tests", (req, res) => {
-  res.json(tests.filter(t => t.studentId == req.params.id));
-});
-// returs all tests for a speciifc coruse
-app.get("/courses/:id/tests", (req, res) => {
-  res.json(tests.filter(t => t.courseId == req.params.id));
-});
-// calcutate student average
-app.get("/students/:id/average", (req, res) => {
-  const list = tests.filter(t => t.studentId == req.params.id);
-  if (list.length === 0) return res.json({ average: null });
-
-  const avg = list.reduce((a, b) => a + (b.mark / b.outOf) * 100, 0) / list.length;
-  res.json({ average: avg });
-});
-// average grade for a course
-app.get("/courses/:id/average", (req, res) => {
-  const list = tests.filter(t => t.courseId == req.params.id);
-  if (list.length === 0) return res.json({ average: null });
-
-  const avg = list.reduce((a, b) => a + (b.mark / b.outOf) * 100, 0) / list.length;
-  res.json({ average: avg });
-});
 
 // Start server
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
 });
 
-// POC
-app.get("/courses/:id/tests", (req, res)=> {
-  res.json(tests.filter(t => t.courseId === req.params.id));
-  if (course === -1) 
+// POC - list all tests for a course
+app.get("/courses/:id/tests", (req, res) => {
+  res.json(tests.filter(t => t.courseId == req.params.id));
+});
+  if (courses === -1) 
     return res.status(404).json({error: "Could not find course"});
-
-})
