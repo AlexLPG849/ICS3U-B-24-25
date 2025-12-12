@@ -1,0 +1,17 @@
+[
+  {"id": 1, "firstName": "Kaylum", "lastName": "Jetha", "grade": 12, "studentNumber": "24001", "homeroom": "Osborne"},
+  {"id": 2, "firstName": "Alex", "lastName": "Lee", "grade": 12, "studentNumber": "24002", "homeroom": "Osborne"},
+  {"id": 3, "firstName": "Hankai", "lastName": "Wang", "grade": 12, "studentNumber": "24003", "homeroom": "Deslauriers"},
+  {"id": 4, "firstName": "Ishaan", "lastName": "Manocha", "grade": 12, "studentNumber": "24004", "homeroom": "Kraus"},
+  {"id": 5, "firstName": "Drake", "lastName": "Rhude", "grade": 12, "studentNumber": "24005", "homeroom": "Clark"},
+  {"id": 6, "firstName": "James", "lastName": "Cha", "grade": 12, "studentNumber": "24006", "homeroom": "Sylvester"},
+  {"id": 7, "firstName": "Jack", "lastName": "Paton", "grade": 12, "studentNumber": "24007", "homeroom": "Russell"},
+  {"id": 8, "firstName": "Nikita", "lastName": "Stupak", "grade": 12, "studentNumber": "24008", "homeroom": "Osborne"},
+  {"id": 9, "firstName": "Kevin", "lastName": "Chen", "grade": 12, "studentNumber": "24009", "homeroom": "Osborne"},
+  {"id": 10, "firstName": "Artin", "lastName": "Danesh", "grade": 12, "studentNumber": "24010", "homeroom": "Osborne"},
+  {"id": 11, "firstName": "Mani", "lastName": "Ketabchi", "grade": 12, "studentNumber": "24011", "homeroom": "McCarthur"},
+  {"id": 12, "firstName": "Jiddy", "lastName": "Sun", "grade": 12, "studentNumber": "24012", "homeroom": "Goyim"},
+  {"id": 13, "firstName": "Brandon", "lastName": "Clarke", "grade": 12, "studentNumber": "24013", "homeroom": "Lee"},
+  {"id": 14, "firstName": "Abraham", "lastName": "Geller", "grade": 12, "studentNumber": "24014", "homeroom": "Stott"},
+  {"id": 15, "firstName": "Charles", "lastName": "Patry", "grade": 12, "studentNumber": "24015", "homeroom": "Stott"}
+]
