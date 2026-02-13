@@ -1,7 +1,6 @@
 const form = document.getElementById("user-form");
 const tbody = document.querySelector("#user-table tbody");
 
-// Load users
 async function loadUsers() {
   const res = await fetch("/api/users");
   const users = await res.json();
@@ -27,7 +26,6 @@ async function loadUsers() {
   }
 }
 
-// Submit form
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -48,7 +46,6 @@ form.addEventListener("submit", async (e) => {
   loadUsers();
 });
 
-// Delete (event delegation)
 tbody.addEventListener("click", async (e) => {
   if (e.target.classList.contains("deleteBtn")) {
     const id = e.target.dataset.id;
@@ -59,5 +56,4 @@ tbody.addEventListener("click", async (e) => {
   }
 });
 
-// Initial load
 loadUsers();
