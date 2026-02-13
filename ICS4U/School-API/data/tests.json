@@ -1,0 +1,31 @@
+[
+  {"id": 1, "studentId": 1, "courseId": 1, "testName": "Unit 1 Test", "date": "2025-02-10", "mark": 87, "outOf": 100, "weight": 15},
+  {"id": 7, "studentId": 7, "courseId": 1, "testName": "Unit 2 Test", "date": "2025-03-01", "mark": 84, "outOf": 100, "weight": 15},
+  {"id": 13, "studentId": 13, "courseId": 1, "testName": "Midterm", "date": "2025-03-15", "mark": 91, "outOf": 100, "weight": 25},
+  {"id": 25, "studentId": 10, "courseId": 1, "testName": "Final Exam", "date": "2025-04-20", "mark": 88, "outOf": 100, "weight": 30},
+
+  {"id": 2, "studentId": 2, "courseId": 2, "testName": "Functions Test", "date": "2025-02-14", "mark": 78, "outOf": 100, "weight": 10},
+  {"id": 8, "studentId": 8, "courseId": 2, "testName": "Logarithms Test", "date": "2025-03-02", "mark": 81, "outOf": 100, "weight": 10},
+  {"id": 14, "studentId": 14, "courseId": 2, "testName": "Trigonometry Test", "date": "2025-03-18", "mark": 86, "outOf": 100, "weight": 15},
+  {"id": 20, "studentId": 5, "courseId": 2, "testName": "Sequences Test", "date": "2025-03-29", "mark": 72, "outOf": 90, "weight": 10},
+
+  {"id": 3, "studentId": 3, "courseId": 3, "testName": "Essay Quiz", "date": "2025-02-12", "mark": 92, "outOf": 100, "weight": 5},
+  {"id": 9, "studentId": 9, "courseId": 3, "testName": "Literature Analysis Test", "date": "2025-03-05", "mark": 89, "outOf": 100, "weight": 15},
+  {"id": 15, "studentId": 15, "courseId": 3, "testName": "Reading Comprehension Quiz", "date": "2025-03-20", "mark": 80, "outOf": 90, "weight": 10},
+  {"id": 21, "studentId": 6, "courseId": 3, "testName": "Creative Writing Quiz", "date": "2025-04-01", "mark": 93, "outOf": 100, "weight": 5},
+
+  {"id": 4, "studentId": 4, "courseId": 4, "testName": "Essay 1", "date": "2025-02-18", "mark": 88, "outOf": 100, "weight": 20},
+  {"id": 10, "studentId": 10, "courseId": 4, "testName": "Novel Analysis", "date": "2025-03-06", "mark": 93, "outOf": 100, "weight": 20},
+  {"id": 16, "studentId": 1, "courseId": 4, "testName": "Essay 2", "date": "2025-03-22", "mark": 95, "outOf": 100, "weight": 20},
+  {"id": 22, "studentId": 7, "courseId": 4, "testName": "Poetry Analysis", "date": "2025-04-02", "mark": 88, "outOf": 100, "weight": 20},
+
+  {"id": 5, "studentId": 5, "courseId": 5, "testName": "Chemistry Basics Test", "date": "2025-02-20", "mark": 75, "outOf": 100, "weight": 10},
+  {"id": 11, "studentId": 11, "courseId": 5, "testName": "Lab Safety Quiz", "date": "2025-03-08", "mark": 70, "outOf": 80, "weight": 10},
+  {"id": 17, "studentId": 2, "courseId": 5, "testName": "Chemical Reactions Test", "date": "2025-03-25", "mark": 77, "outOf": 100, "weight": 10},
+  {"id": 23, "studentId": 8, "courseId": 5, "testName": "Periodic Table Quiz", "date": "2025-04-05", "mark": 85, "outOf": 100, "weight": 10},
+
+  {"id": 6, "studentId": 6, "courseId": 6, "testName": "World History Quiz", "date": "2025-02-09", "mark": 90, "outOf": 100, "weight": 5},
+  {"id": 12, "studentId": 12, "courseId": 6, "testName": "Ancient Civilizations Test", "date": "2025-03-10", "mark": 88, "outOf": 100, "weight": 12},
+  {"id": 18, "studentId": 3, "courseId": 6, "testName": "World War II Test", "date": "2025-03-26", "mark": 82, "outOf": 100, "weight": 15},
+  {"id": 24, "studentId": 9, "courseId": 6, "testName": "Modern History Test", "date": "2025-04-07", "mark": 90, "outOf": 100, "weight": 15}
+]

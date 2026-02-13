@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "code": "ICS4U",
+    "name": "Computer Science",
+    "teacherId": 1,
+    "semester": "1",
+    "room": "307",
+    "schedule": "Day 2 Block 2"
+  },
+  {
+    "id": 2,
+    "code": "HSB4U",
+    "name": "AP Seminar",
+    "teacherId": 2,
+    "semester": "2",
+    "room": "203",
+    "schedule": "Day 2 Block 3"
+  },
+  {
+    "id": 3,
+    "code": "ENG4U",
+    "name": "English",
+    "teacherId": 3,
+    "semester": "1",
+    "room": "214",
+    "schedule": "Day 1 Block 3"
+  },
+  {
+    "id": 4,
+    "code": "FSF4U",
+    "name": "French",
+    "teacherId": 4,
+    "semester": "Full Year",
+    "room": "304",
+    "schedule": "Day 2 Block 1"
+  },
+  {
+    "id": 5,
+    "code": "SCH4U",
+    "name": "Chemistry",
+    "teacherId": 5,
+    "semester": "2",
+    "room": "103",
+    "schedule": "Day 1 Block 4"
+  },
+  {
+    "id": 6,
+    "code": "BBB4M",
+    "name": "Business",
+    "teacherId": 6,
+    "semester": "1",
+    "room": "201",
+    "schedule": "Day 2 Block 4"
+  }
+]
