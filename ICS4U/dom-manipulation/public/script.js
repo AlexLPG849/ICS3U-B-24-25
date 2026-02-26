@@ -22,6 +22,7 @@ async function loadUsers() {
         <button class="btn deleteBtn" data-id="${u._id}">✕</button>
       </td>
     `;
+
     tbody.appendChild(tr);
   }
 }
@@ -49,9 +50,7 @@ form.addEventListener("submit", async (e) => {
 tbody.addEventListener("click", async (e) => {
   if (e.target.classList.contains("deleteBtn")) {
     const id = e.target.dataset.id;
-
     await fetch(`/api/users/${id}`, { method: "DELETE" });
-
     e.target.closest("tr").remove();
   }
 });

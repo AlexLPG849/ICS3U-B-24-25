@@ -3,15 +3,20 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGO_URI)
+// MongoDB connection
+mongoose
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("Mongo error:", err));
 
+// Schema & Model
 const userSchema = new mongoose.Schema({
   name: String,
   age: Number,
@@ -23,6 +28,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
+// Routes
 app.get("/api/users", async (req, res) => {
   const users = await User.find();
   res.json(users);
@@ -30,4 +36,15 @@ app.get("/api/users", async (req, res) => {
 
 app.post("/api/users", async (req, res) => {
   const user = await User.create(req.body);
+  res.status(201).json(user);
+});
+
+app.delete("/api/users/:id", async (req, res) => {
+  await User.findByIdAndDelete(req.params.id);
+  res.sendStatus(204);
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
