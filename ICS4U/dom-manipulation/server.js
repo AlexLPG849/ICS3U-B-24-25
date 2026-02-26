@@ -1,7 +1,13 @@
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
+import dotenv from "dotenv";
+import express from "express";
+import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
 
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -19,37 +25,53 @@ mongoose
 // Schema & Model
 const userSchema = new mongoose.Schema({
   name: String,
-  age: Number,
-  gender: String,
   phone: String,
   address: String,
-  username: String,
+  gender: String,
+  age: Number,
+  username: String
 });
 
 const User = mongoose.model("User", userSchema);
-
-// Routes
-app.get("https://ics3u-b-24-25.onrender.com/api/users", async (req, res) => {
-  const users = await User.find();
-  res.json(users);
-});
-
-app.post("https://ics3u-b-24-25.onrender.com/api/users", async (req, res) => {
-  const user = await User.create(req.body);
-  res.status(201).json(user);
-});
-
-app.delete("https://ics3u-b-24-25.onrender.com/api/users/:id", async (req, res) => {
-  await User.findByIdAndDelete(req.params.id);
-  res.sendStatus(204);
-});
-
-// Serve homepage
-app.get("https://ics3u-b-24-25.onrender.com/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-});
 
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Routes
+app.get("/api/users", async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (err) {
+    console.error("Error fetching users:", err);
+    res.status(500).json({ error: "Failed to fetch users" });
+  }
+});
+
+app.post("/api/users", async (req, res) => {
+  try {
+  const { name, phone, address, gender, age, username } = req.body;
+
+  if (!name || !phone || !address || !gender || !age || !username) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+  const user = await User.create(req.body);
+  res.status(201).json(user);
+  } catch (err) {
+    console.error("Error creating user:", err);
+    res.status(500).json({ error: "Failed to create user" });
+  }
+});
+
+app.delete("/api/users/:id", async (req, res) => {
+  await User.findByIdAndDelete(req.params.id);
+  res.sendStatus(204);
+});
+
+// Serve homepage
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
