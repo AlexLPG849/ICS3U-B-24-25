@@ -44,7 +44,12 @@ app.delete("/api/users/:id", async (req, res) => {
   res.sendStatus(204);
 });
 
+// Serve homepage
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
