@@ -29,23 +29,23 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 // Routes
-app.get("/api/users", async (req, res) => {
+app.get("https://ics3u-b-24-25.onrender.com/api/users", async (req, res) => {
   const users = await User.find();
   res.json(users);
 });
 
-app.post("/api/users", async (req, res) => {
+app.post("https://ics3u-b-24-25.onrender.com/api/users", async (req, res) => {
   const user = await User.create(req.body);
   res.status(201).json(user);
 });
 
-app.delete("/api/users/:id", async (req, res) => {
+app.delete("https://ics3u-b-24-25.onrender.com/api/users/:id", async (req, res) => {
   await User.findByIdAndDelete(req.params.id);
   res.sendStatus(204);
 });
 
 // Serve homepage
-app.get("/", (req, res) => {
+app.get("https://ics3u-b-24-25.onrender.com/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 

@@ -2,7 +2,7 @@ const form = document.getElementById("user-form");
 const tbody = document.querySelector("#user-table tbody");
 
 async function loadUsers() {
-  const res = await fetch("/api/users");
+  const res = await fetch("https://ics3u-b-24-25.onrender.com/api/users");
   const users = await res.json();
 
   tbody.innerHTML = "";
@@ -32,7 +32,7 @@ form.addEventListener("submit", async (e) => {
 
   const data = Object.fromEntries(new FormData(form));
 
-  const res = await fetch("/api/users", {
+  const res = await fetch("https://ics3u-b-24-25.onrender.com/api/users", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -50,7 +50,7 @@ form.addEventListener("submit", async (e) => {
 tbody.addEventListener("click", async (e) => {
   if (e.target.classList.contains("deleteBtn")) {
     const id = e.target.dataset.id;
-    await fetch(`/api/users/${id}`, { method: "DELETE" });
+    await fetch(`https://ics3u-b-24-25.onrender.com/api/users/${id}`, { method: "DELETE" });
     e.target.closest("tr").remove();
   }
 });
